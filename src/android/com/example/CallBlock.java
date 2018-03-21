@@ -43,7 +43,7 @@ public class CallBlock extends CordovaPlugin {
     return true;
   }
 
-  public startWatching(String params){
+  public void startWatching(String params){
   }
 
 
