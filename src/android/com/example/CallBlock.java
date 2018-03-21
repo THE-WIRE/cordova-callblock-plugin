@@ -14,7 +14,7 @@ import org.json.JSONException;
 
 import android.util.Log;
 
-import com.example.PhoneCallStateListener;
+import com.example.PhoneCallStateListener; 
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -58,18 +58,24 @@ public class CallBlock extends CordovaPlugin {
 
   public void startWatch(String params){
     Log.d(TAG, "Initiating watch");
-
-
+    PhoneCallReciever phoneCallReciever = new PhoneCallReciever(this.callbackContext);
+    Log.d(TAG, "Watch ended");
   }
-
 }
 
 public class PhoneCallReciever extends BroadcastReceiver {
 
+  private final CallbackContext callbackContext;
+
+  @Override
+  public PhoneCallReciever(CallbackContext cb){
+    this.callbackContext = cb;
+  }
+
   @Override
   public void onRecieve(Context context, Intent intent){
       TelephonyManager telephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-      PhoneCallStateListener customPhoneListner = new PhoneCallStateListener(context);
+      PhoneCallStateListener customPhoneListner = new PhoneCallStateListener(context, this.callbackContext);
       telephony.listen(customPhoneListner, PhoneStateListener.LISTEN_CAL_STATE);
   }
 }
@@ -79,9 +85,11 @@ public class PhoneCallReciever extends BroadcastReceiver {
 @Override
 public class PhoneCallStateListener extends PhoneStateListener {
   private Context context;
+  private final CallbackContext callbackContext;
 
-  public PhoneCallStateListener(Context context) {
+  public PhoneCallStateListener(Context context, CallbackContext cb) {
       this.context = context;
+      this.callbackContext = cb;
   }
 
   @Override
