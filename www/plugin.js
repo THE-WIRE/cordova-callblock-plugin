@@ -1,14 +1,14 @@
 
 var exec = require('cordova/exec');
 
-var PLUGIN_NAME = 'MyCordovaPlugin';
+var PLUGIN_NAME = 'CallBlock';
 
 var MyCordovaPlugin = {
-  echo: function(phrase, cb) {
-    exec(cb, null, PLUGIN_NAME, 'echo', [phrase]);
+  startWatch: function(phrase, cb) {
+    exec(cb, null, PLUGIN_NAME, 'startWatch', [phrase]);
   },
-  getDate: function(cb) {
-    exec(cb, null, PLUGIN_NAME, 'getDate', []);
+  stopWatch: function(phrase, cb) {
+    exec(cb, null, PLUGIN_NAME, 'stopWatch', [phrase]);
   }
 };
 
