@@ -32,7 +32,7 @@ public class CallBlock extends CordovaPlugin {
       Log.d(TAG, phrase);
 
       //Start Watching for incomming calls
-      startWatch(params);
+      startWatch(phrase);
 
 
     } else if(action.equals("stopWatch")) {
