@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="my-cordova-plugin"
+    id="cordova-callblock-plugin"
     version="1.0.0">
     <name>Cordova Plugin Template</name>
     <description></description>
@@ -15,32 +15,32 @@
       <js-module src="www/plugin.js" name="plugin">
         <runs/>
 
-        <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
-        <clobbers target="MyCordovaPlugin" />
+        <!-- This is the window variable name you want, like window.CallBlock -->
+        <clobbers target="CallBlock" />
       </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
-        <feature name="MyCordovaPlugin">
-          <param name="android-package" value="com.example.MyCordovaPlugin" />
+        <feature name="CallBlock">
+          <param name="android-package" value="com.example.CallBlock" />
           <param name="onload" value="true" />
         </feature>
       </config-file>
 
-      <source-file src="src/android/com/example/MyCordovaPlugin.java" target-dir="src/com/example/" />
+      <source-file src="src/android/com/example/CallBlock.java" target-dir="src/com/example/" />
     </platform>
 
     <!-- ios -->
     <platform name="ios">
         <js-module src="www/plugin.js" name="plugin">
             <runs/>
-            <clobbers target="MyCordovaPlugin" />
+            <clobbers target="CallBlock" />
         </js-module>
         <config-file target="config.xml" parent="/*">
-            <feature name="MyCordovaPlugin">
-                <param name="ios-package" value="MyCordovaPlugin" onload="true" />
+            <feature name="CallBlock">
+                <param name="ios-package" value="CallBlock" onload="true" />
             </feature>
         </config-file>
 
-        <header-file src="src/ios/MyCordovaPlugin.h" />
-        <source-file src="src/ios/MyCordovaPlugin.m" />
+        <header-file src="src/ios/CallBlock.h" />
+        <source-file src="src/ios/CallBlock.m" />
     </platform>
 </plugin>

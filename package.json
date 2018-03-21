@@ -1,12 +1,12 @@
 {
-  "name": "cordova-plugin-template",
+  "name": "cordova-callblock-plugin",
   "version": "1.0.0",
   "cordova": {
-    "id": "cordova-plugin-template",
+    "id": "cordova-callblock-plugin",
     "platforms": [
       "android",
       "ios"
     ]
   },
-  "description": "A starting point for a Cordova Plugin"
+  "description": "Cordova plugin for Call Blocking"
 }

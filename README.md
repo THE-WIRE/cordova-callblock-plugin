@@ -1,4 +1,4 @@
-Cordova Plugin Template
+Cordova Call Block Plugin
 ======
 
-This is a simple starting point for building a Cordova plugin on iOS and Android.
+Cordova Plugin to block incoming calls.
