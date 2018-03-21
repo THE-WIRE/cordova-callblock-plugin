@@ -12,8 +12,22 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-
 import android.util.Log;
+
+import com.example.PhoneCallStateListener;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+
+//For call handling
+import java.lang.reflect.Method;
+import android.media.AudioManager;
+import android.os.bundle;
+
+import com.android.internal.telephony.ITelephony;
 
 
 public class CallBlock extends CordovaPlugin {
@@ -34,7 +48,6 @@ public class CallBlock extends CordovaPlugin {
       //Start Watching for incomming calls
       startWatch(phrase);
 
-
     } else if(action.equals("stopWatch")) {
       // An example of returning data back to the web layer
       // final PluginResult result = new PluginResult(PluginResult.Status.OK, (new Date()).toString());
@@ -43,9 +56,67 @@ public class CallBlock extends CordovaPlugin {
     return true;
   }
 
-  public void startWatching(String params){
+  public void startWatch(String params){
+    Log.d(TAG, "Initiating watch");
+
+
   }
 
-
-
 }
+
+public class PhoneCallReciever extends BroadcastReceiver {
+
+  @Override
+  public void onRecieve(Context context, Intent intent){
+      TelephonyManager telephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+      PhoneCallStateListener customPhoneListner = new PhoneCallStateListener(context);
+      telephony.listen(customPhoneListner, PhoneStateListener.LISTEN_CAL_STATE);
+  }
+}
+
+
+
+@Override
+public class PhoneCallStateListener extends PhoneStateListener {
+  private Context context;
+
+  public PhoneCallStateListener(Context context) {
+      this.context = context;
+  }
+
+  @Override
+  public void OnCallStateChanged(int state, String incomingNumber){
+
+    switch(state){
+      case TelephonyManager.CALL_STATE_RINGING:
+
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        audioManager.setStreamMute(AudioManager.STREAM_RING, true);
+        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
+        try{
+          Class clazz = Class.forName(telephonyManager.getClass().getName());
+          Method method = clazz.getDeclaredMethod("getITelephony");
+          method.setAccessible(true);;
+          ITelephony telephonyService = (ITelephony) method.invoke(telephonyManager);
+
+          telephonyService.silenceRinger();
+          Log.d(TAG, "Call silenced : " + incomingNumber.toString());
+
+          telephonyService.endCall();
+          Log.d(TAG, "Call blocked : " + incomingNumber.toString());
+        } catch(Exception e){
+          Log.e(TAG, "Error : " + e.toString());
+        }
+
+        audioManager.setStreamMute(AudioManager.STREAM_RING, false);
+        break;
+      case PhoneCallStateListener.LISTEN_CALL_STATE:
+    }
+
+    super.OnCallStateChanged(state, incomingNumber);
+  }
+}
+
+
+
