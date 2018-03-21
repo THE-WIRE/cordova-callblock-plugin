@@ -3,7 +3,7 @@ var exec = require('cordova/exec');
 
 var PLUGIN_NAME = 'CallBlock';
 
-var MyCordovaPlugin = {
+var CallBlock = {
   startWatch: function(phrase, cb) {
     exec(cb, null, PLUGIN_NAME, 'startWatch', [phrase]);
   },
@@ -12,4 +12,4 @@ var MyCordovaPlugin = {
   }
 };
 
-module.exports = MyCordovaPlugin;
+module.exports = CallBlock;
