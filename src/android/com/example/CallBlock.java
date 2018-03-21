@@ -13,7 +13,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 
-
 import android.util.Log;
 
 
@@ -45,7 +44,8 @@ public class CallBlock extends CordovaPlugin {
   }
 
   public startWatching(String params){
-
   }
+
+
 
 }
