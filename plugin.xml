@@ -31,6 +31,7 @@
       </config-file>
 
       <source-file src="src/android/com/example/CallBlock.java" target-dir="src/com/example/" />
+      <source-file src="src/android/com/android/internal/telephony/ITelephony.aidl" target-dir="../aidl/com/android/internal/telephony/ITelephony.aidl" />
     </platform>
 
     <!-- ios -->

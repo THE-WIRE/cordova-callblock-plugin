@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
+
 //For call handling
 import java.lang.reflect.Method;
 import android.media.AudioManager;
@@ -52,6 +53,7 @@ public class CallBlock extends CordovaPlugin {
       // An example of returning data back to the web layer
       // final PluginResult result = new PluginResult(PluginResult.Status.OK, (new Date()).toString());
       // callbackContext.sendPluginResult(result);
+    	Log.d(TAG, "Watch ended");
     }
     return true;
   }
@@ -59,7 +61,7 @@ public class CallBlock extends CordovaPlugin {
   public void startWatch(String params){
     Log.d(TAG, "Initiating watch");
     PhoneCallReciever phoneCallReciever = new PhoneCallReciever(this.callbackContext);
-    Log.d(TAG, "Watch ended");
+    
   }
 }
 
