@@ -1,26 +1,26 @@
 package com.example;
 
-// import android.content.Context;
-// import android.media.AudioManager;
-// import android.telephony.PhoneStateListener;
-// import android.telephony.TelephonyManager;
-// import android.util.Log;
+import android.content.Context;
+import android.media.AudioManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 
-// import com.android.internal.telephony.ITelephony
+import com.android.internal.telephony.ITelephony
 
-// import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CallbackContext;
 
-// import java.lang.reflect.Method;
+import java.lang.reflect.Method;
 
-// public class PhoneCallStateListener extends PhoneStateListener {
-//   private Context context;
-//   private CallbackContext callbackContext;
-//   private final static String TAG = "CallBlock";
+public class PhoneCallStateListener extends PhoneStateListener {
+  private Context context;
+  private CallbackContext callbackContext;
+  private final static String TAG = "CallBlock";
 
-//   public PhoneCallStateListener(Context context, CallbackContext cb) {
-//       this.context = context;
-//       this.callbackContext = cb;
-//   }
+  public PhoneCallStateListener(Context context, CallbackContext cb) {
+      this.context = context;
+      this.callbackContext = cb;
+  }
 
 //   public void onCallStateChanged(int state, String incomingNumber){
 
@@ -55,4 +55,4 @@ package com.example;
 
 //     super.onCallStateChanged(state, incomingNumber);
 //   }
-// }
+}
