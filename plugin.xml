@@ -32,7 +32,7 @@
 
       <source-file src="src/android/com/example/CallBlock.java" target-dir="src/com/example/" />
       <source-file src="src/android/com/example/PhoneCallReciever.java" target-dir="src/com/example/" />
-      <source-file src="src/android/com/example/PhoneStateListener.java" target-dir="src/com/example/" />
+      <source-file src="src/android/com/example/PhoneCallStateListener.java" target-dir="src/com/example/" />
       <source-file src="src/android/com/android/internal/telephony/ITelephony.aidl" target-dir="aidl/com/android/internal/telephony/ITelephony.aidl" />
     </platform>
 
