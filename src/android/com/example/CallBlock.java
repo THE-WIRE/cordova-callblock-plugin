@@ -21,8 +21,6 @@ import java.lang.reflect.Method;
 import android.media.AudioManager;
 import android.os.bundle;
 
-import com.android.internal.telephony.ITelephony;
-
 
 public class CallBlock extends CordovaPlugin {
   private static final String TAG = "CallBlock";
